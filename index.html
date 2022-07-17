@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            function incorrect1() {
+                document.getElementById("incorrect1").style.backgroundColor = "red";
+                document.getElementById("incorrect2").style.backgroundColor = "#d9edff";
+                document.getElementById("correct").style.backgroundColor = "#d9edff";
+                document.getElementById("answer1").textContent = "Incorrect.";
+                document.getElementById("answer1").style.color = "red";
+            }
+
+            function incorrect2() {
+                document.getElementById("incorrect2").style.backgroundColor = "red";
+                document.getElementById("incorrect1").style.backgroundColor = "#d9edff";
+                document.getElementById("correct").style.backgroundColor = "#d9edff";
+                document.getElementById("answer1").textContent = "Incorrect.";
+                document.getElementById("answer1").style.color = "red";
+            }
+
+            function correct() {
+                document.getElementById("correct").style.backgroundColor = "green";
+                document.getElementById("incorrect2").style.backgroundColor = "#d9edff";
+                document.getElementById("incorrect1").style.backgroundColor = "#d9edff";
+                document.getElementById("answer1").textContent = "Correct!";
+                document.getElementById("answer1").style.color = "green";
+            }
+
+            // TODO: Add code to check answers to questions
+            function check() {
+                var correctAnswer = "Kyiv,Sevastopol";
+                var userAnswer = document.getElementById("textField").value;
+
+                if (userAnswer === correctAnswer) {
+                  document.getElementById("textField").style.backgroundColor = "green";
+                  document.getElementById("notification").textContent = "Correct!";
+                  document.getElementById("notification").style.color = "green";
+                }
+                else {
+                  document.getElementById("textField").style.backgroundColor = "red";
+                  document.getElementById("notification").textContent = "Incorrect.";
+                  document.getElementById("notification").style.color = "red";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>How many regions are there  in Ukraine? </h3>
+                <h5 id="answer1" onclick="incorrect1()"> </h5>
+                <h5 id="answer1" onclick="incorrect2()"> </h5>
+                <h5 id="answer1" onclick="correct()"> </h5>
+
+
+                    <button id="incorrect1" onclick="incorrect1()">25</button>
+                    <button id="incorrect2" onclick="incorrect2()">27</button>
+                    <button id="correct" onclick="correct()">24</button>
+                <!-- TODO: Add multiple choice question here -->
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What cities have a special status in Ukraine? </h3>
+                <h5 id="notification" onclick="check()"></h5>
+
+                <form>
+                    <input type="text" id="textField" value="" style="color: black"
+                        placeholder="city1,city2"
+                        size="50">
+                    <button id="checkButton" type="button" onclick="check()">Check Answer</button>
+                </form>
+                <!-- TODO: Add free response question here -->
+            </div>
+        </div>
+    </body>
+</html>
